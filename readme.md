@@ -6,7 +6,7 @@
 
 - The model doesn't work de facto, but I believe with a lot more input data (images and boxes) it could start working better and better. It is just a fun experience with Tesseract to recognize this language.
 
-- The full trained data (in heron_language) should be inside the tessdata folder on the tesseract-OCR installdir. Make sure to alter your environment variables if you have any trouble during the OCR process (environment variables > system variables > edit - Name: TESSDATA_PREFIX Value: directory where trainingfile is located, in this case should be ../tessdata/heron_language)
+- The full trained data (in heron_language) should be inside the tessdata folder on the tesseract-OCR installdir. Make sure to alter your environment variables if you have any trouble during the OCR process (environment variables > system variables > edit - Name: TESSDATA_PREFIX Value: directory where trainingfile is located, in this case should be ../tessdata/heron_language). You can also just copy paste all the files to the tessdata directory directly. Just make sure your environment/system variable is set to the correct directory.
 
 - Please see the resources and extra notes below.
 
