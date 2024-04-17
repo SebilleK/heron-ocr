@@ -68,3 +68,4 @@ tesseract [name_of_image_for_label.extension] [name_of_box_file_equal] makebox
 ```bash
 pip install pytesseract pillow opencv-python numpy
 ```
+3. [JTessBoxEditor](https://github.com/nguyenq/jTessBoxEditor). (You need to have Java installed on your computer)
