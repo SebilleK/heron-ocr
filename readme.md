@@ -6,15 +6,15 @@
 
 - The model doesn't work well de facto, but I believe with a lot more input data (images and boxes) it could start working better and better. It is just a fun experience with Tesseract to recognize this language. I label images manually using jTessBoxEditor:
 
-  [!manual_label](examples/labelling.png)
+  ![manual_label](examples/labelling.png)
 
 - Some particular challenges beyond the cursive style for the script would include the particular way of capitalizing letters, and some odd similarities between some characters like the "a" being simply a slightly longer "e", as shown below.
 
-  [!writing_example](examples/writing.png)
+  ![writing_example](examples/writing.png)
 
 - Its results are currently bad, but it does seem to recognize some characters and has slightly better results in specific words it has been trained with before.
 
-  [!results_example](example/results.png)
+  ![results_example](examples/results.png)
 
 - The full trained data (in heron_language) should be inside the tessdata folder on the tesseract-OCR installdir. Make sure to alter your environment variables if you have any trouble during the OCR process (environment variables > system variables > edit - Name: TESSDATA_PREFIX Value: directory where trainingfile is located, in this case should be ../tessdata/heron_language). You can also just copy paste all the files to the tessdata directory directly. Just make sure your environment/system variable is set to the correct directory.
 
@@ -64,3 +64,8 @@ tesseract [name_of_image_for_label.extension] [name_of_box_file_equal] makebox
 - Important:
 
 1. The font I used to get the images in the Heron script the first place is available on the heron_font folder, and I got it from here: [SerenesForest](https://serenesforest.net/path-of-radiance/miscellaneous/ancient-language/) I used the one by Darkspawn980. Thanks!
+2. To install all needed dependencies:
+```bash
+pip install pytesseract pillow opencv-python numpy
+```
+3. [JTessBoxEditor](https://github.com/nguyenq/jTessBoxEditor). (You need to have Java installed on your computer)
