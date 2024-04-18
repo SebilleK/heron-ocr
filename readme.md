@@ -15,8 +15,12 @@
 - Its results are currently bad, but it does seem to recognize some characters and has slightly better results in specific words it has been trained with before.
 
   ![results_example](examples/results.png)
+  ![results_example2](examples/results2.png)
 
 - The full trained data (in heron_language) should be inside the tessdata folder on the tesseract-OCR installdir. Make sure to alter your environment variables if you have any trouble during the OCR process (environment variables > system variables > edit - Name: TESSDATA_PREFIX Value: directory where trainingfile is located, in this case should be ../tessdata/heron_language). You can also just copy paste all the files to the tessdata directory directly. Just make sure your environment/system variable is set to the correct directory.
+You can also check the official documentation [Docs](https://github.com/tesseract-ocr/tesseract/blob/main/doc/tesseract.1.asc#environment-variables).
+
+- To try and improve the OCR I tried to follow the official recommendations [here](https://tesseract-ocr.github.io/tessdoc/ImproveQuality.html) and used normal image preprocessing (resizing, etc:.) and I also changed the tesseract page segmentation method to 6 which seems to achieve the best results. I found that using user patterns and user words is (apparently?) not effective in this case since we're dealing with non-Unicode characters, but it's something worth looking into: [Docs](https://github.com/tesseract-ocr/tesseract/blob/main/doc/tesseract.1.asc#config-files-and-augmenting-with-user-data).
 
 - Please see the resources and extra notes below.
 
@@ -65,7 +69,13 @@ tesseract [name_of_image_for_label.extension] [name_of_box_file_equal] makebox
 
 1. The font I used to get the images in the Heron script the first place is available on the heron_font folder, and I got it from here: [SerenesForest](https://serenesforest.net/path-of-radiance/miscellaneous/ancient-language/) I used the one by Darkspawn980. Thanks!
 2. To install all needed dependencies:
+
 ```bash
 pip install pytesseract pillow opencv-python numpy
 ```
+
 3. [JTessBoxEditor](https://github.com/nguyenq/jTessBoxEditor). (You need to have Java installed on your computer)
+
+- Some more notes:
+
+1. Maybe it's worth using a frequency list but to filter some of the output AFTER the OCR, since we know the output is moderately controlled considering it would consist of a few lines of dialogue throughout the games.
